@@ -7,7 +7,7 @@ require('dotenv').config()
 
 //json middleware
 app.use(express.json())
-const port=3000
+const port=process.env.PORT || 3000
 app.use('/api/v1/tasks',tasks)
 
 const start=async () => {
@@ -15,7 +15,7 @@ const start=async () => {
         await connectDb(process.env.Mongo_URL)
         app.listen(port,console.log(`Server is running at port ${port}`))
     } catch (error) {
-        
+        console.log(error)
     }
 }
 
